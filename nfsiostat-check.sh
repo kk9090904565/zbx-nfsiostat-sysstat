@@ -35,40 +35,12 @@ ERROR_OLD_DATA="-0.9901"
 ERROR_WRONG_PARAM="-0.9902"
 ERROR_MISSING_PARAM="-0.9903"
 
-# No data file to read from
-#if [ ! -f "$NFS_IO_STAT_CMD" ]; then
-#  echo $ERROR_NO_DATA_FILE
-#  exit 1
-#fi
-
 # Missing device to get data from
 if [ -z "$ZBX_REQ_DATA_MOUNT_POINT" ]; then
   echo $ERROR_MISSING_PARAM
   exit 1
 fi
 
-#
-# Old data handling:
-#  - in case the cron can not update the data file
-#  - in case the data are too old we want to notify the system
-# Consider the data as non-valid if older than OLD_DATA minutes
-#
-#OLD_DATA=5
-#if [ $(stat -c "%Y" $NFS_IO_STAT_CMD) -lt $(date -d "now -$OLD_DATA min" "+%s" ) ]; then
-#  echo $ERROR_OLD_DATA
-#  exit 1
-#fi
-
-# 
-# Grab data from NFS_IO_STAT_CMD for key ZBX_REQ_DATA
-#
-# 1st check the device exists and gets data gathered by cron job
-#device_count=$(grep -Ec "^$ZBX_REQ_DATA_MOUNT_POINT ")
-#device_count=$(wc -l $ZBX_REQ_DATA_MOUNT_POINT)
-#if [ $device_count -eq 0 ]; then
-#  echo $ERROR_WRONG_PARAM
-#  exit 1
-#fi
 
 case $ZBX_REQ_DATA in
   rkB_nor/s)     echo $NFS_IO_STAT_CMD | grep -E "^$ZBX_REQ_DATA_MOUNT_POINT" | tail -1 | awk '{print $2}';;
