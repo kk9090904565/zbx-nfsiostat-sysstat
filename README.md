@@ -4,7 +4,7 @@ Zabbix Basic template for NFS  -  nfsiostat-sysstat
 zbx-nfsiostat-sysstat is basic Zabbix LLD template use to display  sysstat nfsiostat 
 
 ## NOTE
-This template is Zabbix Template active template. 
+**This template is Zabbix Template active template.** 
 
 * mount-nfs-discovery.sh - Get nfs mouunt point 
 * nfsiostat-check.sh - Zabbix LLD script 
