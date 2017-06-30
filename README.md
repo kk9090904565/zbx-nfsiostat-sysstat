@@ -12,4 +12,4 @@ Base from : jizhang iostat script - https://github.com/jizhang/zabbix-templates
 
 It's not complete but work for me. :) 
 
-![Sample Graph](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![Sample Graph](zbx-nfsiostat-sysstat/image/zabbix-nfs-io-stat-sysstat-graph.png)
