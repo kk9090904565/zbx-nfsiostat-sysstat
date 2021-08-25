@@ -1,0 +1,45 @@
+- name: install nfs monitoring files for zabbix agent 
+  become: yes
+  become_user: root
+  hosts: zbx-nfs
+  remote_user: 
+  tasks:
+
+  - name: copy nfs discovery script
+    copy:
+      src: mount-nfs-discovery.sh
+      dest: /usr/local/bin/mount-nfs-discovery.sh
+      mode: '0755'
+      group: root
+      owner: root
+
+  - name: copy nfs check iostat script
+    copy:
+      src: nfsiostat-check.sh
+      dest: /usr/local/bin/nfsiostat-check.sh
+      mode: '0755'
+      group: root
+      owner: root
+
+  - name: copy userparameter files
+    copy:
+      src: userparameter_unixdev_nfs_io_stat.conf
+      dest: /etc/zabbix/zabbix_agentd.d/userparameter_unixdev_nfs_io_stat.conf
+      mode: '0644'
+      group: zabbix
+      owner: zabbix
+
+  - name: stop zabbix agent
+    systemd:
+      name: zabbix-agent
+      state: stopped
+
+  - name: delay
+    pause:
+      seconds: 10
+
+  - name: start zabbix agent
+    systemd:
+      name: zabbix-agent
+      state: started
+   
