@@ -3,7 +3,7 @@ Zabbix Basic template for version above 2.0 for NFS  -  nfsiostat
 
 zbx-nfsiostat is basic Zabbix template uses LLD scripts for discover nfs shares and add it to monitoring with nfsiostat script 
 
-It uses nfsiostat instead nfsiostat-sysstat in master branch
+It uses nfsiostat instead nfsiostat-sysstat like in master branch
 
 Also it doesn't use active checks for get metrics.
 
