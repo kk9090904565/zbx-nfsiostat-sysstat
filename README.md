@@ -1,7 +1,7 @@
 # zbx-nfsiostat fork
 Zabbix Basic template for NFS  -  nfsiostat
 
-zbx-nfsiostat-sysstat is basic Zabbix LLD template use to display sysstat nfsiostat 
+zbx-nfsiostat is basic Zabbix LLD template use to display sysstat nfsiostat 
 
 ## NOTE
 **This template is Zabbix Template active template.** 
@@ -9,7 +9,7 @@ zbx-nfsiostat-sysstat is basic Zabbix LLD template use to display sysstat nfsios
 * mount-nfs-discovery.sh - Get nfs mouunt point 
 * nfsiostat-check.sh - Zabbix LLD script 
 * userparameter_unixdev_nfs_io_stat.conf - Zabbix user parameter file
-* zbx_template_nfsiostat_sysstat_2.0.xml - Zabbix Template  
+* zbx_template_nfsiostat_2.0.xml - Zabbix Template  
 
 Base from : jizhang iostat script - https://github.com/jizhang/zabbix-templates
 
