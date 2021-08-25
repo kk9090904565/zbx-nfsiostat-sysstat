@@ -18,3 +18,4 @@ Also it doesn't use active checks for get metrics.
 3. Import Zabbix template ```zbx_tempalte_nfsiostat_sysstat_2.0.xml``` to zabbix  
 4. reload zabbix-agent service. This step also may be completed with playbook.  
 
+Works fine on Zabbix 2.4.6, but I didn't test this yet on above versions, sry.
