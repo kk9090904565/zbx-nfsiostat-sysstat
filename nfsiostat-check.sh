@@ -24,7 +24,7 @@ ZBX_REQ_DATA_MOUNT_POINT="$1"
 
 # source data file
 #NFS_IO_STAT_CMD=$(nfsiostat-sysstat |grep -v Linux |grep -v Filesystem |grep -v -e "^$"|cut -f2 -d':')
-NFS_IO_STAT_CMD=$(nfsiostat $ZBX_REQ_DATA_MOUNT_POINT | sed "1,4d" | grep -v read | grep -v write)
+NFS_IO_STAT_CMD=$(nfsiostat $ZBX_REQ_DATA_MOUNT_POINT | sed "1,4d" | grep -v read | grep -v write | awk '{print}' ORS=' ')
 #echo $NFS_TO_STAT_CMD
 # Error handling:
 #  - need to be displayable in Zabbix (avoid NOT_SUPPORTED)
