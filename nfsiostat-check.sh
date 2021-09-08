@@ -23,9 +23,7 @@ ZBX_REQ_DATA="$2"
 ZBX_REQ_DATA_MOUNT_POINT="$1"
 
 # source data file
-#NFS_IO_STAT_CMD=$(nfsiostat-sysstat |grep -v Linux |grep -v Filesystem |grep -v -e "^$"|cut -f2 -d':')
 NFS_IO_STAT_CMD=$(nfsiostat $ZBX_REQ_DATA_MOUNT_POINT | sed "1,4d" | grep -v read | grep -v write | awk '{print}' ORS=' ')
-#echo $NFS_TO_STAT_CMD
 # Error handling:
 #  - need to be displayable in Zabbix (avoid NOT_SUPPORTED)
 #  - items need to be of type "float" (allow negative + float)
@@ -43,12 +41,6 @@ fi
 
 
 case $ZBX_REQ_DATA in
-#  rkB_nor/s)   echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $2}';;
-#  wkB_nor/s)     echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $3}';;
-#  rkB_dir/s)        echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $4}';;
-#  wkB_dir/s)        echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $5}';;
-#  rkB_svr/s)      echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $6}';;
-#  wkB_svr/s)      echo $NFS_IO_STAT_CMD | grep $ZBX_REQ_DATA_MOUNT_POINT | tail -1 | awk '{print $7}';;
   rpcbacklog) echo $NFS_IO_STAT_CMD | awk '{print $2}' ;;
   rretrans) echo $NFS_IO_STAT_CMD | awk '{print $6}' ;;
   wretrans) echo $NFS_IO_STAT_CMD | awk '{print $13}' ;;
